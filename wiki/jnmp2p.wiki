@@ -21,6 +21,9 @@ The class files Involved in the framework are:
 
 
 =Features=
+v2.0
+ * Added internal support for file transfers using MsgFile class
+
 v1.0
  * Support for Multiple connections over a single jnmp2p object
  * Same code runs over 2 machines
