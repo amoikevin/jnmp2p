@@ -1,0 +1,41 @@
+#summary The Java Network Event Model framework for P2P application development: Change the way you think about P2P applications.
+#labels Featured,Phase-Implementation,Phase-Requirements
+
+= Introduction =
+
+We really need to change the way we develop network applications. Too much time is invested in developing code to handle network communication rather than concentrate on application features.
+The jnmp2p framework provides a set of API to make P2P applications as easy to develop as GUI applications.
+Theyre based on the same fundamental concept, "Events". You dont have to worry about the communication between two participating devices. Just design your application logic and set up the protocol for communication and youre all set for a rich p2p application experience. 
+The same code runs on both machines, so you can kiss goodbye to developing seperate server code and client code. jnmp2p takes care of it for you.
+
+= Details =
+
+==The Class Files==
+
+The class files Involved in the framework are:
+
+ * *Msg*: This is the transmission unit between the 2 devices.
+ * *Protocol*: Specifies the rules for handling Msg units.
+ * *jnmp2p*: This Class is used to represent a connection repository for a single application.
+ * * Connnection*: Obtained from the jnmp2p object, it repesents connection between 2 machines and is used to create and send messages.
+
+
+=Features=
+v1.0
+ * Support for Multiple connections over a single jnmp2p object
+ * Same code runs over 2 machines
+ * User defined events to handle communication between devices.
+
+=Use=
+To use the framework, we need to use the procedure:
+ * Create a Protocol object passing an instance of the object that will be the listener. {{{ Protocol p=new Protocol(object) }}}
+ * To associate a method handler with a message. {{{ p.addHandler(String <Msg header>, String <method name>) }}}
+ * Create a jnmp2p instance using Protocol object. {{{ jnmp2p jnm=new jnmp2p(p) }}}
+ * Create a method <method name> in the class of <object> which you passed to Protocol with parameters (Connection , Msg)
+ * Retrieve a connection object by using Connection conn=jnm.connect(ip) method.
+ * Create a message using the conn.createMsg(String header,Object content).
+ * Send the message conn.sendMsg().
+ * Add Message handling code in the handler method.
+
+To view it in action download the Chat Application built using the jnmp2p. 
+Seeing the code used to create the app, clearly shows the advantage of using the jnmp2p framework. 
