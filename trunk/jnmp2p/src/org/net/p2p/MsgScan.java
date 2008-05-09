@@ -26,7 +26,7 @@ class MsgScan implements Runnable{
         new Thread(this).start();
     }
     public void run(){
-        Thread.currentThread().setName(conn.name);
+        
         try{ 
         while(running){
 		

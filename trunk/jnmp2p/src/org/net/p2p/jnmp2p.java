@@ -31,7 +31,7 @@ public class jnmp2p {
         Thread.currentThread().setName("main");            
         }
 
-    protected void addConnection(String ip,Connection a){
+    void addConnection(String ip,Connection a){
         conn.put(ip, a);
         new MsgScan(protocol,a);
     }
@@ -83,19 +83,20 @@ public class jnmp2p {
         return a;
        
     }
- public static void close(Connection a){
+ public static boolean close(Connection a){
     try{
     a.getInput().close();
     a.getOutput().close();
     a.getSocket().close();
     conn.remove(a.getSocket().getInetAddress().getHostAddress());
     scanners.remove(a.getSocket().getInetAddress().getHostAddress());
+    return true;
     }
     catch(IOException e){
-        
+        return false;
     }
     catch(NullPointerException e){
-        
+        return false;
     }
     }
  

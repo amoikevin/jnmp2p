@@ -22,10 +22,10 @@ public class Msg implements Serializable{
     private boolean seal=false;
     private String password;
     private boolean passset=false;
-    public Msg(String h){
+    Msg(String h){
         header=h;
     }
-    public Msg(String h,Object c){
+    Msg(String h,Object c){
             header=h;
             content=c;
             type=c.getClass().getName();
