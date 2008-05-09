@@ -26,8 +26,8 @@ public class Connection {
    private ObjectOutputStream output=null;
    private ObjectInputStream input=null;
    
-   public String name;
-   public static Connection Connect(InetAddress destination,int port){
+  
+  static Connection Connect(InetAddress destination,int port){
        Socket tempSocket=null;
        try{
        tempSocket=new Socket(destination,port);
@@ -39,7 +39,7 @@ public class Connection {
        }
        
    }
-   public static Connection Connect(String destination,int port){
+  static Connection Connect(String destination,int port){
        Socket tempSocket=null;
        try{
        tempSocket=new Socket(destination,port);
@@ -53,11 +53,11 @@ public class Connection {
        
    }
    
-   public Connection(Socket a,int port){
+ Connection(Socket a,int port){
        
        this.port=port;
        connSocket=a;
-       name=connSocket.getInetAddress().getHostAddress();
+       
        try{           
        output=new ObjectOutputStream(connSocket.getOutputStream());
        input=new ObjectInputStream(connSocket.getInputStream());
@@ -68,7 +68,7 @@ public class Connection {
        
    }
    
-   public Msg getMsg(){
+   Msg getMsg(){
 	
 	try{
                 Msg inputMsg=(Msg)input.readObject();

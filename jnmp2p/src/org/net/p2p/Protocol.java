@@ -35,10 +35,10 @@ public class Protocol implements Runnable {
     public void addMsgHandler(String header){
         handlers.put(header, header);
     }
-    public String getHandler(String header){
+    String getHandler(String header){
         return handlers.get(header);
     }
-    public void distribute(Connection a,Msg msg){
+     void distribute(Connection a,Msg msg){
         while(lock){}
         tempMsg=msg;
         tempConn=a;
